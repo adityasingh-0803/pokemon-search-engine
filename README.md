@@ -17,15 +17,7 @@ The system is built with a backend REST API and a frontend UI, designed to run e
 
 ## 🏗️ Architecture Overview
 
-Frontend (React + Vite)
-|
-| REST API
-|
-Backend (FastAPI)
-|
-| External API
-|
-PokeAPI
+Frontend (React + Vite) → REST API → Backend (FastAPI) → External API (PokeAPI)
 
 
 ---
