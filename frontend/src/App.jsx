@@ -1,31 +1,56 @@
 import { useState } from "react";
 import { fetchPokemon } from "./api";
-import PokemonCard from "./components/PokemonCard";
 
-export default function App() {
+function App() {
   const [name, setName] = useState("");
-  const [data, setData] = useState(null);
+  const [pokemon, setPokemon] = useState(null);
   const [error, setError] = useState("");
 
-  const search = async () => {
+  const handleSearch = async () => {
+    setError("");
+    setPokemon(null);
+
     try {
-      setError("");
-      const result = await fetchPokemon(name);
-      setData(result);
-    } catch {
+      const data = await fetchPokemon(name.toLowerCase());
+      setPokemon(data);
+    } catch (err) {
       setError("Pokemon not found");
-      setData(null);
     }
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Pokemon Search</h1>
-      <input onChange={e => setName(e.target.value)} />
-      <button onClick={search}>Search</button>
+    <div style={{ padding: "20px" }}>
+      <h1>Pokemon Search Engine</h1>
 
-      {error && <p>{error}</p>}
-      {data && <PokemonCard data={data} />}
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter Pokemon name"
+      />
+      <button onClick={handleSearch}>Search</button>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {pokemon && (
+        <div>
+          <h2>{pokemon.name.toUpperCase()}</h2>
+          <img src={pokemon.sprite} alt={pokemon.name} />
+          <p>Height: {pokemon.height}</p>
+          <p>Weight: {pokemon.weight}</p>
+          <p>Types: {pokemon.types.join(", ")}</p>
+
+          <h3>Stats</h3>
+          <ul>
+            {Object.entries(pokemon.stats).map(([k, v]) => (
+              <li key={k}>
+                {k}: {v}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
+
+export default App;
