@@ -22,6 +22,17 @@ Frontend (React + Vite) → REST API → Backend (FastAPI) → External API (Pok
 
 ---
 
+## 📸 Screenshots
+
+### Frontend – Pokémon Search
+![Frontend Pikachu](screenshots/frontend-pikachu.png)
+
+### Frontend – Another Pokemon Example
+![Frontend Charizard](screenshots/frontend-charizard.png)
+
+### Backend – API Documentation (Swagger)
+![Backend Swagger](screenshots/backend-swagger.png)
+---
 ## 🛠 Tech Stack
 
 ### Backend
