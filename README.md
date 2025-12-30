@@ -40,7 +40,7 @@ Frontend (React + Vite) → REST API → Backend (FastAPI) → External API (Pok
 ---
 
 ## 📂 Project Structure
-
+```bash
 pokemon-search-engine/
 ├── backend/
 │ ├── app/
@@ -59,7 +59,7 @@ pokemon-search-engine/
 │ └── README.md
 │
 └── README.md
-
+```
 
 ---
 
